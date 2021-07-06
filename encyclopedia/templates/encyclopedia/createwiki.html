@@ -1,0 +1,40 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Add
+{% endblock %}
+
+{% block body %}
+
+    <h1>Create a new Wiki entry</h1>
+
+    <form action="{% url 'wiki:add' %}" method ="post">
+        {% csrf_token %}
+        {{ form }}
+        <!-- <label for="wikititle">Wiki Title: </label>
+        <input type="text" id = "wikititle"> <br> <br>
+        <label for="wiki">Create a new wiki article using the Markup syntax below:</label><br>
+        <textarea id="wiki" name="wiki" rows="4" cols="50" placeholder="Create a new wiki article using the Markup syntax.">
+        </textarea> -->
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <p>Click the "Submit" button to save your wiki entry.</p>
+        
+{% endblock %}
+
+
+
+""" def add_entry(title, wiki):
+    print("starting add_entry")
+    print(title, wiki)
+    #TODO add validation that file does not exist with case.  o
+    # or test is FileExistsError is case sensitive.
+    try:
+        f = default_storage.open(f"entries/{title}.md","x")
+        f.write(wiki)
+        f.close()
+        return
+    except FileExistsError:
+        return None """
