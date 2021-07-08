@@ -36,3 +36,11 @@ textarea {
 .sidebar h2 {
     margin-top: 5px;
 }
+
+table, th, td {
+    border: 5px solid black;
+}
+  
+table {
+    width: 50%;
+}

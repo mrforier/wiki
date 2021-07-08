@@ -8,14 +8,9 @@
 
     <h1>Create a new Wiki entry</h1>
 
-    <form action="{% url 'wiki:add' %}" method ="post">
+    <form action="{% url 'wiki:edit' %}" method ="post">
         {% csrf_token %}
         {{ form }}
-        <!-- <label for="wikititle">Wiki Title: </label>
-        <input type="text" id = "wikititle"> <br> <br>
-        <label for="wiki">Create a new wiki article using the Markup syntax below:</label><br>
-        <textarea id="wiki" name="wiki" rows="4" cols="50" placeholder="Create a new wiki article using the Markup syntax.">
-        </textarea> -->
         <br><br>
         <input type="submit" value="Submit">
     </form>

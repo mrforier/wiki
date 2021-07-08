@@ -1,3 +1,4 @@
+from random import random
 import re
 
 from django.core.files.base import ContentFile
@@ -8,10 +9,8 @@ def list_entries():
     """
     Returns a list of all names of encyclopedia entries.
     """
-    filenames = default_storage.listdir("entries")
-    #print(filenames)
-    filenames = filenames[1]
-    #print(filenames)
+    filenames = default_storage.listdir("entries")[1]
+    print(filenames)
     return list(sorted(re.sub(r"\.md$", "", filename)
         for filename in filenames if filename.endswith(".md")))
 
@@ -67,6 +66,9 @@ def search_match(query):
     return searchlist, matchtype
 
 def add_entry(title, wiki):
+    """
+    adds new wiki entires to entries direcotory.
+    """
     print("starting add_entry")
     print(title, wiki)
     try:
@@ -80,8 +82,34 @@ def add_entry(title, wiki):
         print("add try exception")
         return None
 
+def edit_entry(title, wiki):
+    """
+    writes update to existing wiki entries.
+    """
+    print("starting edit_entry")
+    print(title, wiki)
+    try:
+        print("in edit try")
+        f = default_storage.open(f"entries/{title}.md","w")
+        f.write(wiki)
+        print("worte file")
+        f.close()
+        print("after file close")
+        return True
+    except:
+        print("edit try exception")
+        return None
 
 
+def random_entry():
+    """
+    returns a random entry title from entry directory.
+    """
+    filenames = default_storage.listdir("entries/")[1]
+    print(filenames)
+    entry = filenames[int(random()*(len(filenames)-1))]
+    print(entry)
+    return re.sub(r"\.md$", "", entry)
 
 
     

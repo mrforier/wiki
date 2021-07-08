@@ -8,8 +8,17 @@
 
     <h1>Entry for {{ title }}</h1>
     <div>
-        <hi>This is the Body</hi>
-        <div>{{ wikibody }}</div>
+        <div><hi>This is the Body</hi>
+            <form action="{% url 'wiki:edit'  %}">
+                <a href="#" class="btn btn-info btn-lg">
+                    <span class="glyphicon glyphicon-pencil"></span> Edit Entry
+                </a>
+                <br><br>
+                <input  value = {{title}} xxxname="q">
+                <input type="submit" value={{title}} name="q">
+            </form>
+        </div>
+        <div>{{ wikibody|safe }}</div>
     </div>
         
 {% endblock %}
